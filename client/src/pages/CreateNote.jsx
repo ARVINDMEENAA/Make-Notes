@@ -1,5 +1,4 @@
 import "./CreateNote.css";
-
 import { useState } from "react";
 
 function CreateNote() {
@@ -12,7 +11,7 @@ function CreateNote() {
     const note = { title, content };
 
     try {
-      const res = await fetch("http://localhost:5000/api/notes", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/notes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +22,6 @@ function CreateNote() {
       const data = await res.json();
       console.log("✅ Saved:", data);
 
-      // Clear form
       settitle("");
       setcontent("");
 
